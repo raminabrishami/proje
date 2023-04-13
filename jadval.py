@@ -49,7 +49,7 @@ def create_table(n_clicks,np_text):
  
 
  
-app.layout=dbc.Container([dbc.Row([text,div,nemodar,btn],class_name='text-center')])
+app.layout=dbc.Container([dbc.Row([text,btn,div,nemodar],class_name='text-center')])
 
 if __name__=='__main__':
     app.run_server(port='8000')
