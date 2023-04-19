@@ -1,0 +1,35 @@
+import os
+from dash import Dash,dcc,Output,Input
+import dash_bootstrap_components as dbc
+import dash_html_components as html
+import plotly.graph_objs as go
+app=Dash(__name__,external_stylesheets=[dbc.themes.BOOTSTRAP])
+
+
+btn=dbc.Button('جستو جو')
+
+nemodar=dcc.Graph(figure={})
+
+@app.callback(
+    Output(btn,component_property='n_clicks'),
+    Output(nemodar,component_property='figure'),
+    Input(btn,component_property='n_clicks')
+    )
+
+
+def update_text(n_clicks):
+    if n_clicks>0:
+        with open ('price.txt') as reads:
+            price=reads.read().split('\n')
+        with open ('price.txt') as reads:
+            price=reads.read().split('\n')
+        price=list(map(int,price))
+        fig = go.Figure(data=[go.Scatter(x=list(range(0,len(price))), y=price)])
+        return n_clicks,fig
+
+
+
+app.layout=dbc.Container([dbc.Row([btn,nemodar],className='text-center')])
+
+if __name__=='__main__':
+    app.run_server(port='8000')
