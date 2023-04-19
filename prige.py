@@ -53,4 +53,4 @@ app.layout=dbc.Container([dbc.Row([inputt,btn,text,div,nemodar],className='text-
 
 
 if __name__=='__main__':
-    app.run_server(debug=True,port='8000')
+    app.run_server(port='8000')
